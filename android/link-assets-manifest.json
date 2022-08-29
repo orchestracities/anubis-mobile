@@ -1,0 +1,481 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "node_modules/react-native-fs/.flowconfig",
+      "sha1": "d873434bf88a365a361c9153dcd8bdd69e11071e"
+    },
+    {
+      "path": "node_modules/react-native-fs/.jshintrc",
+      "sha1": "e1cd55c9961c75a4d6523b07c5738cac6e90cc80"
+    },
+    {
+      "path": "node_modules/react-native-fs/CHANGELOG.md",
+      "sha1": "f8e1a52c4ae7b504828df2cd5cec123b6f6b0e0e"
+    },
+    {
+      "path": "node_modules/react-native-fs/Downloader.h",
+      "sha1": "2c5b5be10bc70d2ad917233de7323a80b1a6f00c"
+    },
+    {
+      "path": "node_modules/react-native-fs/Downloader.m",
+      "sha1": "2fdf0eff8ac38a3a3b9276c988e64608444b9597"
+    },
+    {
+      "path": "node_modules/react-native-fs/FS.common.js",
+      "sha1": "8a37928a98bff14fdbd1a35d39cdfcc6a55d475c"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/AppDelegate.h",
+      "sha1": "65f38c83beee6245d7e333e4da52bf5efb83341f"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/AppDelegate.m",
+      "sha1": "8a1eddb304644a5c517d8e7b3eca56e18b20d201"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Base.lproj/LaunchScreen.xib",
+      "sha1": "158dae7cae0baf0e01ef00019c88dfcc147eb4c5"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/FSTest.js",
+      "sha1": "06c6ff174cda733f521880f4c03f73a844082b00"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Images.xcassets/AppIcon.appiconset/Contents.json",
+      "sha1": "06dc2bdbb0946ee11934dd955deb08da73e4a144"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Images.xcassets/AppIcon.appiconset/uie_icon@2x-1.png",
+      "sha1": "73efa8456fcaa4ef31a78ca2001a306a094e5d85"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Images.xcassets/AppIcon.appiconset/uie_icon@2x-2.png",
+      "sha1": "73efa8456fcaa4ef31a78ca2001a306a094e5d85"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Images.xcassets/AppIcon.appiconset/uie_icon@2x-3.png",
+      "sha1": "73efa8456fcaa4ef31a78ca2001a306a094e5d85"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Images.xcassets/AppIcon.appiconset/uie_icon@2x-4.png",
+      "sha1": "73efa8456fcaa4ef31a78ca2001a306a094e5d85"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Images.xcassets/AppIcon.appiconset/uie_icon@2x-5.png",
+      "sha1": "73efa8456fcaa4ef31a78ca2001a306a094e5d85"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Images.xcassets/AppIcon.appiconset/uie_icon@2x.png",
+      "sha1": "73efa8456fcaa4ef31a78ca2001a306a094e5d85"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/Info.plist",
+      "sha1": "b9a915e966601ec3aa041324d59047088f52c378"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/IntegrationTestHarnessTest.js",
+      "sha1": "c792a4c8ace1219cb6da68eec55e6de7852ad738"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/IntegrationTests.xcodeproj/project.pbxproj",
+      "sha1": "b450d8077f5bf2c1e1470014a866eac716db2f42"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/IntegrationTests.xcodeproj/xcshareddata/xcschemes/IntegrationTests.xcscheme",
+      "sha1": "0c034d6441256168790ddedb322006acd6e0efdd"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/IntegrationTestsApp.js",
+      "sha1": "d082058ca5f42bb2261f9571c7003b2617397b9d"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/IntegrationTestsTests/Info.plist",
+      "sha1": "417f1d8a90bb0548919934cdff1106742f2d3b93"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/IntegrationTestsTests/IntegrationTestsTests.m",
+      "sha1": "95b55cd0e31cf2e66a2b50c5f54b1a68bc4ecad8"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/IntegrationTestsTests/ReferenceImages/IntegrationTests-IntegrationTestsApp/testSimpleSnapshot_1@2x.png",
+      "sha1": "36fca8bf7343eee31ea15ba3966e71e9fa8a3b69"
+    },
+    {
+      "path": "node_modules/react-native-fs/IntegrationTests/main.m",
+      "sha1": "7839c6ff0813e613c04383668dc089c525725e88"
+    },
+    {
+      "path": "node_modules/react-native-fs/LICENSE",
+      "sha1": "48ec2dec649ecc30864fc22e54206cc0239f0b4c"
+    },
+    {
+      "path": "node_modules/react-native-fs/NSArray+Map.h",
+      "sha1": "3e85395e8342cc7c0bad6bd1b273d7af1ad107db"
+    },
+    {
+      "path": "node_modules/react-native-fs/NSArray+Map.m",
+      "sha1": "49f63385f3abd077c0c34a3ba07419ed3265f11a"
+    },
+    {
+      "path": "node_modules/react-native-fs/README.md",
+      "sha1": "c708d260acf25768c3776fe9f62e8d6b07840aff"
+    },
+    {
+      "path": "node_modules/react-native-fs/RNFS.podspec",
+      "sha1": "76e406db2666c1ea3201725347fe2a76f5d04e8c"
+    },
+    {
+      "path": "node_modules/react-native-fs/RNFS.xcodeproj/project.pbxproj",
+      "sha1": "e6b8e0e729548aaa700466fe21ed772a1fcecc3f"
+    },
+    {
+      "path": "node_modules/react-native-fs/RNFSManager.h",
+      "sha1": "4c733522d81bbf06bce2314180043ee6bc6b73c0"
+    },
+    {
+      "path": "node_modules/react-native-fs/RNFSManager.m",
+      "sha1": "c813f14e47c83dcc6b202d9c33b32f04ef1f3349"
+    },
+    {
+      "path": "node_modules/react-native-fs/Uploader.h",
+      "sha1": "bdc66098590ffcb70548a42bbf5cc7e90f9de60f"
+    },
+    {
+      "path": "node_modules/react-native-fs/Uploader.m",
+      "sha1": "0bc6c738d679fdd6495c3d873c56cc5ec3743d93"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/.transforms/61c3cbf6d96dc47350fe558bb5d843e0/results.bin",
+      "sha1": "e61eec5708ffcf318ff07e9a4f45661b228ba237"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/.transforms/61c3cbf6d96dc47350fe558bb5d843e0/transformed/classes/classes.dex",
+      "sha1": "f15be85251c1a9eb873e874e82986ca9f2d202ce"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/.transforms/fc2367c1e230514577e71f9841689970/results.bin",
+      "sha1": "e61eec5708ffcf318ff07e9a4f45661b228ba237"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/.transforms/fc2367c1e230514577e71f9841689970/transformed/classes/classes.dex",
+      "sha1": "f15be85251c1a9eb873e874e82986ca9f2d202ce"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/generated/source/buildConfig/debug/com/rnfs/BuildConfig.java",
+      "sha1": "7ffdedae750c0f6c5e2fd7e8b2ce0649c6812954"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml",
+      "sha1": "188e8ce7f0cb89b98debd250d060c0cd36f9a632"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json",
+      "sha1": "8f5738cd03bf7e2c154c26cb2fa21fdf36c8f3f2"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/aar_metadata/debug/aar-metadata.properties",
+      "sha1": "1a805497c3d661b4c858f24b41d25cc658ca9f63"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/annotation_processor_list/debug/annotationProcessors.json",
+      "sha1": "bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/compile_library_classes_jar/debug/classes.jar",
+      "sha1": "abca7ad7f39ec42266390c7108397a4ede266d6b"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/compile_r_class_jar/debug/R.jar",
+      "sha1": "40b6373136ef68ce2bd861ae025f95b636a1321c"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/compile_symbol_list/debug/R.txt",
+      "sha1": "9b37e82ad3425ee00dd88ffde8b7f7af0a4b7da3"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml",
+      "sha1": "a6079f26dfa4686f7ffa143ecd88207d4d5d52b1"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/incremental/mergeDebugShaders/merger.xml",
+      "sha1": "74e9d8cc942a3c77bffa5761a719172833a9a385"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/incremental/packageDebugAssets/merger.xml",
+      "sha1": "13cc173fceeb51f42f8ab925db1c6e04dae17643"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/incremental/packageDebugResources/compile-file-map.properties",
+      "sha1": "d62e3107d7d41ec748f8fa9bd7731371eefd8a7c"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/incremental/packageDebugResources/merger.xml",
+      "sha1": "3df1bd87d6b98192e678f927e6ae435caf9b4949"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/BuildConfig.class",
+      "sha1": "c8d7246ef89f2b388d06e35b06ac3f6be5cdb386"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/DownloadParams$OnDownloadBegin.class",
+      "sha1": "2e2e8eb53a497196ecdcf91f5c03f435aeaa9d99"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/DownloadParams$OnDownloadProgress.class",
+      "sha1": "305fad699fc8aca8eaa78ac952faa68934c761a0"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/DownloadParams$OnTaskCompleted.class",
+      "sha1": "d4d9bab23b3f39af6abc96a67662b70c38daced1"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/DownloadParams.class",
+      "sha1": "99d6eba409a8d39002b438f609baf61fa15162ab"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/DownloadResult.class",
+      "sha1": "d69be29d45ddf61c30b67811b056aa71c034376c"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/Downloader$1.class",
+      "sha1": "395f9e45740bcbf72b0d96fcdf7819f7bb6f7331"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/Downloader.class",
+      "sha1": "51b590ec1f82dd267b40d4541c2d4890de3315cd"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/IORejectionException.class",
+      "sha1": "1eb3fb184224d5f807ec03595aef2dba72d7ab80"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$1.class",
+      "sha1": "8fcfb2d7eae76f390fa8ff18ad10361932123fc1"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$2.class",
+      "sha1": "4d4fcd92d62c41edd7bf033c6ce2a5d2fd4ebeeb"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$3.class",
+      "sha1": "484ecc8fd179314a9795a5f739c57869367da255"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$4.class",
+      "sha1": "53fb1e204084a87fbdfbd98a82de60dd559874f9"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$5.class",
+      "sha1": "612886bfaa70226bff531fdc3a1cd4a0a9f5a26d"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$6.class",
+      "sha1": "706ae5b117766c106fe79b2df670e7576d51c5e6"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$7.class",
+      "sha1": "9cd71207d863b160d4b3946201c3175d25752891"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$8.class",
+      "sha1": "29557950793f567176486a024b128b5369f4a27b"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$9.class",
+      "sha1": "0feebe26df294e19e6ea3286fbe1276cabe15727"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager$CopyFileTask.class",
+      "sha1": "37e5824ffae0d7249f91081a8c7d038c1e20d757"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSManager.class",
+      "sha1": "9c86401a5aab207756c8cdb3d1afe5bf4bc55db6"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/RNFSPackage.class",
+      "sha1": "46fc6738d54bf99daa56b5eace1397cc143affa1"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/UploadParams$onUploadBegin.class",
+      "sha1": "9f9837540fa1ad958ce6f4893f9b158552a07613"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/UploadParams$onUploadComplete.class",
+      "sha1": "3e2ea82bfc8614bc3497f2039c9217326503b8b5"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/UploadParams$onUploadProgress.class",
+      "sha1": "d32acf9ea2d33860f4b2d620d3f234e4d47b2245"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/UploadParams.class",
+      "sha1": "e7fa8beca323ed2e1a5de8edf8009b4058baa720"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/UploadResult.class",
+      "sha1": "0152b44f30ddbb7c4e1daba0ad1eb8cd1d636013"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/Uploader$1.class",
+      "sha1": "267d5d7753292b1008148503fda8bec4872b224a"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/javac/debug/classes/com/rnfs/Uploader.class",
+      "sha1": "54ba2adede269775a7de847ae57139c6cedcc14d"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/local_only_symbol_list/debug/R-def.txt",
+      "sha1": "e438412ee208897b3333b596dda11b200ac03ed6"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt",
+      "sha1": "3c743e5d0d855baf725393798625581d3aa7a2c1"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml",
+      "sha1": "188e8ce7f0cb89b98debd250d060c0cd36f9a632"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/navigation_json/debug/navigation.json",
+      "sha1": "97d170e1550eee4afc0af065b78cda302a97674c"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/packaged_manifests/debug/output-metadata.json",
+      "sha1": "93ea59e66f4e38c6928d2a199ea914ccd2053b23"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/runtime_library_classes_jar/debug/classes.jar",
+      "sha1": "285e4392d5290bfe52247e4f1954cac349bd6ca6"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt",
+      "sha1": "175c6ead2f1e9ecd6f9d26650f05737d44ef7732"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/outputs/logs/manifest-merger-debug-report.txt",
+      "sha1": "f2f5a57cb5bf63e95d037df3d48eccbd406623f7"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin",
+      "sha1": "f55411c73426d8d6d9ea2fb742c84bd6d6d20608"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/build.gradle",
+      "sha1": "52197999f62fca7be8e1d437140ffcbb4dd104c0"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/AndroidManifest.xml",
+      "sha1": "190a01ffe8e5537fe709dfcfa1929f9be1839999"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/DownloadParams.java",
+      "sha1": "b7aee0d6a8c359ea68bdd7a553fc558d9637bd0c"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/DownloadResult.java",
+      "sha1": "b7d4f290cacbba2a821419da4b89a90e796d1a40"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/Downloader.java",
+      "sha1": "f0a40f62ba2cfeeb3c3b1b3cbd6a1f5ec83fd011"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/IORejectionException.java",
+      "sha1": "961226447610dff0b115895ba9b007159b96d966"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/RNFSManager.java",
+      "sha1": "577777e42e6138a26dd1dc8821c66916b59ad2c1"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/RNFSPackage.java",
+      "sha1": "f807a06712461ccfb0d0729d54e5ed717b87b82c"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/UploadParams.java",
+      "sha1": "ebe3c687459e3761bede7351734e59f3d1e3dd8a"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/UploadResult.java",
+      "sha1": "2ea2012a650aaf839957718ce70c6d2d15f53978"
+    },
+    {
+      "path": "node_modules/react-native-fs/android/src/main/java/com/rnfs/Uploader.java",
+      "sha1": "cadd4b415618395d12c34f26a2ea5696db010ca9"
+    },
+    {
+      "path": "node_modules/react-native-fs/index.d.ts",
+      "sha1": "883d1c300be06e2beb7bb8f9a878d234ad5220ee"
+    },
+    {
+      "path": "node_modules/react-native-fs/jsconfig.json",
+      "sha1": "af9dc7efa71e4a0f9d67304df7e17f8c66a5d7a1"
+    },
+    {
+      "path": "node_modules/react-native-fs/package.json",
+      "sha1": "2b89245933bf4032cdc9062aa3dcf2f9472f7e51"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS/Properties/AssemblyInfo.cs",
+      "sha1": "d69037f2c0885f22415cc6641b2f484902829717"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS/Properties/RNFS.rd.xml",
+      "sha1": "82cf0bde4c6abf560dd8f414f32c9e4c044e3886"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS/RNFS.csproj",
+      "sha1": "5348a9c595934ff5a180e2225434202bc658d1ec"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS/RNFSManager.cs",
+      "sha1": "3eeb5892edff1e427ad825eaf40106c8425244e5"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS/RNFSPackage.cs",
+      "sha1": "aa780f13f030a8eff895dbfeedd25f38159ced2d"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS/RequestCancellationException.cs",
+      "sha1": "07fe80ab29d5179d163c5fe1838460480bb7fdff"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/DiskUtil.cs",
+      "sha1": "f2110efc0e063f225a5bb425b1d7cf91b4a18838"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/Properties/AssemblyInfo.cs",
+      "sha1": "d69037f2c0885f22415cc6641b2f484902829717"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/Properties/RNFS.rd.xml",
+      "sha1": "82cf0bde4c6abf560dd8f414f32c9e4c044e3886"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/RNFS.Net46.csproj",
+      "sha1": "d743ad5ffc6c4c80db3b4c2b3e8594fdd5cd72b3"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/RNFSManager.cs",
+      "sha1": "d59498a35328e377847c8b6d1f1ac1198599185e"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/RNFSPackage.cs",
+      "sha1": "aa780f13f030a8eff895dbfeedd25f38159ced2d"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/obj/x64/Debug/RNFS.Net46.csprojAssemblyReference.cache",
+      "sha1": "23a5dce9b2b3607fac2782415e49f036bf53afbd"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.Net46/packages.config",
+      "sha1": "b8114337bbaa74cf9a7acb0e7d2026c634a33587"
+    },
+    {
+      "path": "node_modules/react-native-fs/windows/RNFS.sln",
+      "sha1": "dcbcc3c2df2ac6e96053f6a7fd06ff60617d7d9d"
+    }
+  ]
+}
