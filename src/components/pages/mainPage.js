@@ -10,7 +10,7 @@ import {
   I18nManager,
   View
 } from 'react-native';
-import { AnimatedFAB, Appbar, Portal, Text, Card, Title, Paragraph, Badge, TouchableRipple } from 'react-native-paper';
+import { AnimatedFAB, Appbar, Portal, Text, Card, Title, Paragraph, Badge, TextInput } from 'react-native-paper';
 import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
@@ -66,15 +66,51 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
     } else { return 0 }
   }
 
-  console.log(data[indexOfData].usrData)
+  const [openSearch, setOpenSearch] = React.useState(false);
+  const [search, setSearch] = React.useState("");
+  const [elementsDisplayed, setElementsDisplayed] = React.useState(data[indexOfData].usrData);
+
+const filterElements=(value)=>{
+  let result = data[indexOfData].usrData.filter(i => i.id.toLowerCase().includes(value.toLowerCase())||i.description.toLowerCase().includes(value.toLowerCase()));
+  setElementsDisplayed(result);
+}
+
+React.useEffect(() => {
+  filterElements(search);
+}, [search]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Portal>
         <Appbar.Header elevated={true}>
-          <Appbar.Content title="" />
           {
             (idPressed !== "") ? <><Appbar.Action icon="border-color" onPress={() => { editElement() }} />
               <Appbar.Action icon="delete" onPress={() => { deleteElement(data) }} /></> : <></>
+          }
+
+          {
+            (!openSearch)? <Appbar.Action icon="magnify" onPress={() => { setOpenSearch(true) }} />:<></>
+          }
+         {
+          (openSearch)?
+            <View style={{
+              width: '100%',
+            }} >
+              <TextInput
+                mode="flat"
+                outlineColor={"#43ff6400"}
+                selectionColor={'#8086ba'}
+                underlineColor={"#43ff6400"}
+                autoFocus={true}
+                activeUnderlineColor={"#43ff6400"}
+                activeOutlineColor={"#43ff6400"}
+                style={{borderRadius: 20}}
+                theme={{ roundness: 20 }} 
+                onChangeText={value =>  setSearch(value)}
+               
+                left={<TextInput.Icon icon="arrow-left" onPress={()=>{setOpenSearch(false)}}/>}
+              />
+            </View>:<></>
           }
         </Appbar.Header>
 
@@ -92,7 +128,7 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
             </View>
           </View>
 
-          {data[indexOfData].usrData.map((thisUsrData, index) => (
+          {elementsDisplayed.map((thisUsrData, index) => (
             <View style={{
               flexDirection: "row",
               justifyContent: 'center'
@@ -101,7 +137,7 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
                 width: '97%',
               }} >
                 <Card
-                key={index}
+                  key={index}
                   onLongPress={() => toElementActions(thisUsrData.id)}
                   onPress={() => toChildrenPage(thisUsrData)}
                   type={"contained"}
