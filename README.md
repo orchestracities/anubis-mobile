@@ -2,7 +2,7 @@
 
 ## Setup
 
-In order to run Anubis mobile you should at first configure react native using this [guide](https://reactnative.dev/docs/environment-setup).
+In order to run Anubis mobile you must at first configure React native using this [guide](https://reactnative.dev/docs/environment-setup).
 After that run inside the folder
 
 ```bash
