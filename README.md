@@ -9,3 +9,12 @@ After that run inside the folder
 $ npm install
 $ react-native run-android
 ```
+
+### If watchman is doing an error:
+
+This error is very common with the port on OSX to fix it, run this commands in order and then start the application again 
+
+```bash
+$ watchman watch-del-all
+$ watchman shutdown-server
+```
