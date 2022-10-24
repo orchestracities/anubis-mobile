@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 import { AnimatedFAB, Appbar, Portal, Text, Card, Title, Paragraph, Badge, TextInput } from 'react-native-paper';
 import { useNavigate } from "react-router-native";
+import axios from 'axios';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,6 +30,11 @@ const styles = StyleSheet.create({
 export default function MainPage({ data, setData, writeFile, indexOfData, childrenElements, setChildrenElemens, setIdToEdit }) {
   const [isExtended, setIsExtended] = React.useState(true);
   const [idPressed, setIDpressed] = React.useState("");
+  const [loader, setLoader] = React.useState(false);
+  const [openSearch, setOpenSearch] = React.useState(false);
+  const [search, setSearch] = React.useState("");
+  const [elementsDisplayed, setElementsDisplayed] = React.useState(data[indexOfData].usrData);
+  const [parentElement, setParentElement] = React.useState(data[indexOfData]);
   const navigate = useNavigate();
 
   const isIOS = Platform.OS === 'ios';
@@ -51,8 +58,17 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
     let objIndex = dataBlock[indexOfData].usrData.findIndex((obj => obj.id === idPressed));
     dataBlock[indexOfData].usrData.splice(objIndex, 1);
     setIDpressed("")
-    setData(dataBlock);
     writeFile(JSON.stringify(dataBlock));
+    setElementsDisplayed(dataBlock[indexOfData].usrData)
+    setParentElement(dataBlock[indexOfData])
+  }
+
+  const updateData = (dataBlock, newData) => {
+    dataBlock[indexOfData] = newData[0];
+    writeFile(JSON.stringify(dataBlock));
+    setElementsDisplayed(dataBlock[indexOfData].usrData)
+    setParentElement(dataBlock[indexOfData])
+    setLoader(false);
   }
 
   const editElement = () => {
@@ -66,18 +82,48 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
     } else { return 0 }
   }
 
-  const [openSearch, setOpenSearch] = React.useState(false);
-  const [search, setSearch] = React.useState("");
-  const [elementsDisplayed, setElementsDisplayed] = React.useState(data[indexOfData].usrData);
 
-const filterElements=(value)=>{
-  let result = data[indexOfData].usrData.filter(i => i.id.toLowerCase().includes(value.toLowerCase())||i.description.toLowerCase().includes(value.toLowerCase()));
-  setElementsDisplayed(result);
-}
+  const filterElements = (value) => {
+    let result = data[indexOfData].usrData.filter(i => i.id.toLowerCase().includes(value.toLowerCase()) || i.description.toLowerCase().includes(value.toLowerCase()));
+    setElementsDisplayed(result);
+  }
 
-React.useEffect(() => {
-  filterElements(search);
-}, [search]);
+  React.useEffect(() => {
+    filterElements(search);
+  }, [search]);
+
+  const syncData = () => {
+
+    console.log("DATATOSEND:" + JSON.stringify([parentElement]))
+    setLoader(true);
+    axios
+      .post("http://192.168.1.171:8098/resource/mobile/send", {
+        "service": "Mobile",
+        "servicepath": "/",
+        "policies": [parentElement]
+      })
+      .then(() => {
+        axios
+          .post("http://192.168.1.171:8099/resource/mobile/retrieve", {
+            "service": "Mobile",
+            "servicepath": "/",
+            "resource": "resource1"
+          })
+          .then((response) => {
+            setLoader(false);
+            updateData(data, response.data.responseData)
+
+          })
+          .catch((e) => {
+            console.log(e)
+          });
+      })
+      .catch((e) => {
+        console.log(e)
+      });
+
+  };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -89,31 +135,32 @@ React.useEffect(() => {
           }
 
           {
-            (!openSearch)? <Appbar.Action icon="magnify" onPress={() => { setOpenSearch(true) }} />:<></>
+            (!openSearch && idPressed === "") ? <Appbar.Action icon="magnify" onPress={() => { setOpenSearch(true) }} /> : <></>
           }
-         {
-          (openSearch)?
-            <View style={{
-              width: '100%',
-            }} >
-              <TextInput
-                mode="flat"
-                outlineColor={"#43ff6400"}
-                selectionColor={'#8086ba'}
-                underlineColor={"#43ff6400"}
-                autoFocus={true}
-                activeUnderlineColor={"#43ff6400"}
-                activeOutlineColor={"#43ff6400"}
-                style={{borderRadius: 20}}
-                theme={{ roundness: 20 }} 
-                onChangeText={value =>  setSearch(value)}
-               
-                left={<TextInput.Icon icon="arrow-left" onPress={()=>{setOpenSearch(false)}}/>}
-              />
-            </View>:<></>
-          }
-        </Appbar.Header>
+          {
+            (openSearch) ?
+              <View style={{
+                width: '100%',
+              }} >
+                <TextInput
+                  mode="flat"
+                  outlineColor={"#43ff6400"}
+                  selectionColor={'#8086ba'}
+                  underlineColor={"#43ff6400"}
+                  autoFocus={true}
+                  activeUnderlineColor={"#43ff6400"}
+                  activeOutlineColor={"#43ff6400"}
+                  style={{ borderRadius: 20 }}
+                  theme={{ roundness: 20 }}
+                  onChangeText={value => setSearch(value)}
 
+                  left={<TextInput.Icon icon="arrow-left" onPress={() => { setOpenSearch(false) }} />}
+                />
+              </View> : <></>
+          }
+          <Appbar.Content />
+          {(!loader) ? <Appbar.Action icon="sync" onPress={() => { syncData() }} /> : <ActivityIndicator animating={loader} color={MD2Colors.blue800} />}
+        </Appbar.Header>
         <ScrollView onScroll={onScroll}>
           <View style={{
             flexDirection: "row",
@@ -127,7 +174,6 @@ React.useEffect(() => {
               <Text variant="displayMedium">Home</Text>
             </View>
           </View>
-
           {elementsDisplayed.map((thisUsrData, index) => (
             <View style={{
               flexDirection: "row",

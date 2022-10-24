@@ -1,30 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
 import * as React from 'react';
-import type { Node } from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-import {
-  Colors,
-  DebugInstructions,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 import RNFS from 'react-native-fs';
 import { NativeRouter, Routes, Link, Route } from "react-router-native";
 import UserDetection from './src/components/login/userDetection'
@@ -41,6 +21,7 @@ export default function App() {
   const [indexOfData, setindexOfData] = React.useState(-1);
   const [childrenElements, setChildrenElemens] = React.useState([]);
   const [idToEdit, setIdToEdit] = React.useState("")
+  const [updator, setUpdator] = React.useState(Math.random())
   // write the file
 
   const readFile = async () => {
@@ -59,7 +40,9 @@ export default function App() {
     RNFS.writeFile(path, data, 'utf8')
       .then(() => {
         console.log('FILE created ' + data);
-        setData([...[], ...JSON.parse(data)]);
+       let newData=JSON.parse(data)
+       setData(newData);
+        setUpdator(Math.random());
       })
       .catch((err) => {
         console.log(err.message);
