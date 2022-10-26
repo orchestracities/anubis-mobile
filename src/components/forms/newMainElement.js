@@ -29,11 +29,11 @@ export default function NewMain ({ data,setData,setindexOfData,writeFile,indexOf
     const [description,setDescription]=React.useState('');
 
 
-//data[indexOfData].usrData
+//data[indexOfData].resources
 const saveNewData=(dataBlock)=>{
    
     if(id!==""&&description!==""){
-        dataBlock[indexOfData].usrData.push({id:id,description:description,children:[]})
+        dataBlock[indexOfData].resources.push({id:id,description:description,policies:[]})
         setData(dataBlock);
         writeFile(JSON.stringify(dataBlock));
         navigate(-1)

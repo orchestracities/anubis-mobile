@@ -24,16 +24,16 @@ import uuid from 'react-native-uuid';
 export default function EditMain ({ data,setData,setindexOfData,writeFile,indexOfData,idToEdit}) {
     const navigate = useNavigate();
 
-    const thisIndex= data[indexOfData].usrData.findIndex((obj => obj.id == idToEdit));
-    const [id,setId]=React.useState(data[indexOfData].usrData[thisIndex].id);
-    const [description,setDescription]=React.useState(data[indexOfData].usrData[thisIndex].description);
+    const thisIndex= data[indexOfData].resources.findIndex((obj => obj.id == idToEdit));
+    const [id,setId]=React.useState(data[indexOfData].resources[thisIndex].id);
+    const [description,setDescription]=React.useState(data[indexOfData].resources[thisIndex].description);
 
 
-//data[indexOfData].usrData
+//data[indexOfData].resources
 const saveNewData=(dataBlock)=>{
    
     if(id!==""&&description!==""){
-        dataBlock[indexOfData].usrData[thisIndex]={id:id,description:description,children:[]}
+        dataBlock[indexOfData].resources[thisIndex]={id:id,description:description,policies:[]}
         setData(dataBlock);
         writeFile(JSON.stringify(dataBlock));
         navigate(-1)

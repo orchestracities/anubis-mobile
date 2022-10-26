@@ -10,16 +10,16 @@ import { NativeRouter, Routes, Link, Route } from "react-router-native";
 import UserDetection from './src/components/login/userDetection'
 import MainPage from './src/components/pages/mainPage'
 import NewMain from './src/components/forms/newMainElement'
-import ChildrenPage from './src/components/pages/childrenPage';
-import NewChild from './src/components/forms/newChild';
+import PoliciesPage from './src/components/pages/policiesPage';
+import NewPolicy from './src/components/forms/newPolicy';
 import EditMain from './src/components/forms/editMainElement';
-import EditChild from './src/components/forms/editChild';
+import EditPolicy from './src/components/forms/editPolicy';
 export default function App() {
 
   const path = RNFS.DocumentDirectoryPath + '/anubisData.json';
   const [data, setData] = React.useState([]);
   const [indexOfData, setindexOfData] = React.useState(-1);
-  const [childrenElements, setChildrenElemens] = React.useState([]);
+  const [policiesElements, setpoliciesElemens] = React.useState([]);
   const [idToEdit, setIdToEdit] = React.useState("")
   const [updator, setUpdator] = React.useState(Math.random())
   // write the file
@@ -75,16 +75,16 @@ export default function App() {
                     setindexOfData={setindexOfData} 
                     writeFile={writeFile} 
                     indexOfData={indexOfData} 
-                    setChildrenElemens={setChildrenElemens} 
+                    setpoliciesElemens={setpoliciesElemens} 
                     setIdToEdit={setIdToEdit}/>
                     } 
                     />
               <Route exact path="/mainPage/newElement" element={<NewMain data={data} setData={setData} setindexOfData={setindexOfData} writeFile={writeFile} indexOfData={indexOfData} ></NewMain>} />
               <Route exact path="/mainPage/editElement" element={<EditMain data={data} setData={setData} writeFile={writeFile} indexOfData={indexOfData} idToEdit={idToEdit}></EditMain>} />
 
-              <Route exact path="/children" element={<ChildrenPage data={data} setData={setData} writeFile={writeFile} indexOfData={indexOfData} childrenElements={childrenElements} setChildrenElemens={setChildrenElemens}  setIdToEdit={setIdToEdit}></ChildrenPage>} />
-              <Route exact path="/children/newElement" element={<NewChild data={data} setData={setData} writeFile={writeFile} indexOfData={indexOfData} childrenElements={childrenElements} setChildrenElemens={setChildrenElemens}></NewChild>} />
-              <Route exact path="/children/editElement" element={<EditChild data={data} setData={setData} writeFile={writeFile} indexOfData={indexOfData} childrenElements={childrenElements} setChildrenElemens={setChildrenElemens} idToEdit={idToEdit}></EditChild>} />
+              <Route exact path="/policies" element={<PoliciesPage data={data} setData={setData} writeFile={writeFile} indexOfData={indexOfData} policiesElements={policiesElements} setpoliciesElemens={setpoliciesElemens}  setIdToEdit={setIdToEdit}></PoliciesPage>} />
+              <Route exact path="/policies/newElement" element={<NewPolicy data={data} setData={setData} writeFile={writeFile} indexOfData={indexOfData} policiesElements={policiesElements} setpoliciesElemens={setpoliciesElemens}></NewPolicy>} />
+              <Route exact path="/policies/editElement" element={<EditPolicy data={data} setData={setData} writeFile={writeFile} indexOfData={indexOfData} policiesElements={policiesElements} setpoliciesElemens={setpoliciesElemens} idToEdit={idToEdit}></EditPolicy>} />
 
             </Routes>
 

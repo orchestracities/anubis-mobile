@@ -40,13 +40,13 @@ const items = [
     name: 'Page 3',
   },
 ];
-export default function ChildrenPage({ data, setData, writeFile, indexOfData, childrenElements, setChildrenElemens, setIdToEdit }) {
+export default function PoliciesPage({ data, setData, writeFile, indexOfData, policiesElements, setpoliciesElemens, setIdToEdit }) {
   const [isExtended, setIsExtended] = React.useState(true);
   const [idPressed, setIDpressed] = React.useState("");
   const navigate = useNavigate();
   const [openSearch, setOpenSearch] = React.useState(false);
   const [search, setSearch] = React.useState("");
-  const [elementsDisplayed, setElementsDisplayed] = React.useState(childrenElements.children);
+  const [elementsDisplayed, setElementsDisplayed] = React.useState(policiesElements.policies);
   const [page, setPage] = React.useState(0);
   const [numberOfItemsPerPage, onItemsPerPageChange] = React.useState(numberOfItemsPerPageList[0]);
   const from = page * numberOfItemsPerPage;
@@ -77,25 +77,25 @@ export default function ChildrenPage({ data, setData, writeFile, indexOfData, ch
   }
 
   const deleteElement = (dataBlock) => {
-    let mainIndex = dataBlock[indexOfData].usrData.findIndex((obj => obj.id == childrenElements.id));
-    let thisElementIndex = dataBlock[indexOfData].usrData[mainIndex].children.findIndex((obj => obj.id === idPressed));
-    dataBlock[indexOfData].usrData[mainIndex].children.splice(thisElementIndex, 1);
-    setChildrenElemens(dataBlock[indexOfData].usrData[mainIndex])
+    let mainIndex = dataBlock[indexOfData].resources.findIndex((obj => obj.id == policiesElements.id));
+    let thisElementIndex = dataBlock[indexOfData].resources[mainIndex].policies.findIndex((obj => obj.id === idPressed));
+    dataBlock[indexOfData].resources[mainIndex].policies.splice(thisElementIndex, 1);
+    setpoliciesElemens(dataBlock[indexOfData].resources[mainIndex])
     setIDpressed("")
     writeFile(JSON.stringify(dataBlock));
-    //setElementsDisplayed(dataBlock[indexOfData].usrData[mainIndex].children)
+    //setElementsDisplayed(dataBlock[indexOfData].resources[mainIndex].policies)
   }
 
   const editElement = () => {
     setIdToEdit(idPressed);
-    navigate("/children/editElement")
+    navigate("/policies/editElement")
   }
 
 
  
 
   const filterElements = (value) => {
-    let result = childrenElements.children.filter(i => i.id.toLowerCase().includes(value.toLowerCase()) || i.actorType.toLowerCase().includes(value.toLowerCase()) || i.mode.toLowerCase().includes(value.toLowerCase()));
+    let result = policiesElements.policies.filter(i => i.id.toLowerCase().includes(value.toLowerCase()) || i.actorType.toLowerCase().includes(value.toLowerCase()) || i.mode.toLowerCase().includes(value.toLowerCase()));
     setElementsDisplayed(result);
   }
 
@@ -111,7 +111,7 @@ export default function ChildrenPage({ data, setData, writeFile, indexOfData, ch
             (!openSearch) ? <Appbar.BackAction onPress={() => { navigate(-1) }} /> : <></>
           }
 
-          <Appbar.Content title={childrenElements.id} />
+          <Appbar.Content title={policiesElements.id} />
           {
             (idPressed !== "") ? <><Appbar.Action icon="border-color" onPress={() => { editElement() }} />
               <Appbar.Action icon="delete" onPress={() => { deleteElement(data) }} /></> : <></>
@@ -162,12 +162,12 @@ export default function ChildrenPage({ data, setData, writeFile, indexOfData, ch
               <DataTable.Title >Mode</DataTable.Title>
             </DataTable.Header>
 
-            {elementsDisplayed.map((thisUsrData, index) => (
-              <DataTable.Row key={index} onLongPress={() => toElementActions(thisUsrData.id)}
-                onPress={() => console.log("pressed")} style={checkPress(thisUsrData.id)}>
-                <DataTable.Cell>{thisUsrData.id}</DataTable.Cell>
-                <DataTable.Cell >{thisUsrData.actorType}</DataTable.Cell>
-                <DataTable.Cell >{thisUsrData.mode}.0</DataTable.Cell>
+            {elementsDisplayed.map((thisresources, index) => (
+              <DataTable.Row key={index} onLongPress={() => toElementActions(thisresources.id)}
+                onPress={() => console.log("pressed")} style={checkPress(thisresources.id)}>
+                <DataTable.Cell>{thisresources.id}</DataTable.Cell>
+                <DataTable.Cell >{thisresources.actorType}</DataTable.Cell>
+                <DataTable.Cell >{thisresources.mode.join()}</DataTable.Cell>
               </DataTable.Row>
             ))}
 
@@ -189,7 +189,7 @@ export default function ChildrenPage({ data, setData, writeFile, indexOfData, ch
           icon={'plus'}
           label={'New Policy'}
           extended={isExtended}
-          onPress={() => navigate("/children/newElement")}
+          onPress={() => navigate("/policies/newElement")}
           visible={true}
           animateFrom={'right'}
           iconMode={'automatic'}

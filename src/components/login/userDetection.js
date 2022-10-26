@@ -49,15 +49,15 @@ export default function UserDetection({ data, setData, setindexOfData, writeFile
           console.log(objIndex)
           return navigate("/mainPage");
         } else {
-          setData([...data, ...[{ usrMail: text, usrData: [] }]])
-          writeFile(JSON.stringify([...data, ...[{ usrMail: text, usrData: [] }]]))
+          setData([...data, ...[{ usrMail: text, resources: [] }]])
+          writeFile(JSON.stringify([...data, ...[{ usrMail: text, resources: [] }]]))
           setindexOfData(data.length);
           console.log(data.length)
           return navigate("/mainPage");
         }
       } else {
-        setData([...[], ...[{ usrMail: text, usrData: [] }]])
-        writeFile(JSON.stringify([...[], ...[{ usrMail: text, usrData: [] }]]))
+        setData([...[], ...[{ usrMail: text, resources: [] }]])
+        writeFile(JSON.stringify([...[], ...[{ usrMail: text, resources: [] }]]))
         setindexOfData(0);
         console.log(0)
         return navigate("/mainPage");

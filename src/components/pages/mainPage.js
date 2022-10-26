@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
 
 });
 
-export default function MainPage({ data, setData, writeFile, indexOfData, childrenElements, setChildrenElemens, setIdToEdit }) {
+export default function MainPage({ data, setData, writeFile, indexOfData, policiesElements, setpoliciesElemens, setIdToEdit }) {
   const [isExtended, setIsExtended] = React.useState(true);
   const [idPressed, setIDpressed] = React.useState("");
   const [loader, setLoader] = React.useState(false);
   const [openSearch, setOpenSearch] = React.useState(false);
   const [search, setSearch] = React.useState("");
-  const [elementsDisplayed, setElementsDisplayed] = React.useState(data[indexOfData].usrData);
+  const [elementsDisplayed, setElementsDisplayed] = React.useState(data[indexOfData].resources);
   const [parentElement, setParentElement] = React.useState(data[indexOfData]);
   const navigate = useNavigate();
 
@@ -45,9 +45,9 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
     setIsExtended(currentScrollPosition <= 0);
   };
 
-  const toChildrenPage = (children) => {
-    setChildrenElemens(children);
-    navigate("/children")
+  const topoliciesPage = (policies) => {
+    setpoliciesElemens(policies);
+    navigate("/policies")
   }
 
   const toElementActions = (id) => {
@@ -55,18 +55,18 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
   }
 
   const deleteElement = (dataBlock) => {
-    let objIndex = dataBlock[indexOfData].usrData.findIndex((obj => obj.id === idPressed));
-    dataBlock[indexOfData].usrData.splice(objIndex, 1);
+    let objIndex = dataBlock[indexOfData].resources.findIndex((obj => obj.id === idPressed));
+    dataBlock[indexOfData].resources.splice(objIndex, 1);
     setIDpressed("")
     writeFile(JSON.stringify(dataBlock));
-    setElementsDisplayed(dataBlock[indexOfData].usrData)
+    setElementsDisplayed(dataBlock[indexOfData].resources)
     setParentElement(dataBlock[indexOfData])
   }
 
   const updateData = (dataBlock, newData) => {
     dataBlock[indexOfData] = newData[0];
     writeFile(JSON.stringify(dataBlock));
-    setElementsDisplayed(dataBlock[indexOfData].usrData)
+    setElementsDisplayed(dataBlock[indexOfData].resources)
     setParentElement(dataBlock[indexOfData])
     setLoader(false);
   }
@@ -84,7 +84,7 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
 
 
   const filterElements = (value) => {
-    let result = data[indexOfData].usrData.filter(i => i.id.toLowerCase().includes(value.toLowerCase()) || i.description.toLowerCase().includes(value.toLowerCase()));
+    let result = data[indexOfData].resources.filter(i => i.id.toLowerCase().includes(value.toLowerCase()) || i.description.toLowerCase().includes(value.toLowerCase()));
     setElementsDisplayed(result);
   }
 
@@ -174,7 +174,7 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
               <Text variant="displayMedium">Home</Text>
             </View>
           </View>
-          {elementsDisplayed.map((thisUsrData, index) => (
+          {elementsDisplayed.map((thisresources, index) => (
             <View style={{
               flexDirection: "row",
               justifyContent: 'center'
@@ -184,17 +184,17 @@ export default function MainPage({ data, setData, writeFile, indexOfData, childr
               }} >
                 <Card
                   key={index}
-                  onLongPress={() => toElementActions(thisUsrData.id)}
-                  onPress={() => toChildrenPage(thisUsrData)}
+                  onLongPress={() => toElementActions(thisresources.id)}
+                  onPress={() => topoliciesPage(thisresources)}
                   type={"contained"}
                   elevation={3}
-                  style={checkPress(thisUsrData.id)}>
+                  style={checkPress(thisresources.id)}>
                   <Card.Content>
-                    <Paragraph>{thisUsrData.id}</Paragraph>
-                    <Text variant="labelMedium">{thisUsrData.description}</Text>
+                    <Paragraph>{thisresources.id}</Paragraph>
+                    <Text variant="labelMedium">{thisresources.description}</Text>
                   </Card.Content>
                   <Card.Actions>
-                    <Badge>{thisUsrData.children.length}</Badge>
+                    <Badge>{thisresources.policies.length}</Badge>
                   </Card.Actions>
                 </Card>
               </View>
