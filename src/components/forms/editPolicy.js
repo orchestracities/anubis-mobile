@@ -44,7 +44,7 @@ export default function EditPolicy({ data, setData, setindexOfData, writeFile, i
   const [actor, setActor] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType))?"acl:singleUser":currentData.actorType);
   const [mode, setMode] = React.useState(","+currentData.mode.join());
   const [id, setId] = React.useState(currentData.id);
-  const [text, setText] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType))?currentData.actorType:"");
+  const [text, setText] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType))?currentData.actorType.replace('acl:',''):"");
   const actorTypes = [
     {
       label: "Authenticated Actor",
@@ -90,7 +90,7 @@ export default function EditPolicy({ data, setData, setindexOfData, writeFile, i
     if (id !== "" && actor !== ""&& mode.length > 0) {
       let mainIndex = dataBlock[indexOfData].resources.findIndex((obj => obj.id == policiesElements.id));
       let thisElementIndex = dataBlock[indexOfData].resources[mainIndex].policies.findIndex((obj => obj.id === idToEdit));
-      dataBlock[indexOfData].resources[mainIndex].policies[thisElementIndex] = { id: id, actorType: (actor !== "acl:singleUser")?actor:text, mode: mode.split(",").slice(1) };
+      dataBlock[indexOfData].resources[mainIndex].policies[thisElementIndex] = { id: id, actorType: (actor !== "acl:singleUser")?actor:"acl:"+text, mode: mode.split(",").slice(1) };
       setpoliciesElemens(dataBlock[indexOfData].resources[mainIndex])
       setData(dataBlock);
       writeFile(JSON.stringify(dataBlock));

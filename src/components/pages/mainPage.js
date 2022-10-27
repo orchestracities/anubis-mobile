@@ -191,7 +191,7 @@ export default function MainPage({ data, setData, writeFile, indexOfData, polici
                   style={checkPress(thisresources.id)}>
                   <Card.Content>
                     <Paragraph>{thisresources.id}</Paragraph>
-                    <Text variant="labelMedium">{thisresources.description}</Text>
+                    <Text variant="labelMedium">{thisresources.resource_type[0]}</Text>
                   </Card.Content>
                   <Card.Actions>
                     <Badge>{thisresources.policies.length}</Badge>
