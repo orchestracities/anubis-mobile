@@ -18,18 +18,28 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import RNFS, { read, write } from 'react-native-fs';
 import { useNavigate } from "react-router-native";
-import { AnimatedFAB, Appbar, Portal, Text, TextInput } from 'react-native-paper';
+import { AnimatedFAB, Appbar, Portal, Text, TextInput, HelperText } from 'react-native-paper';
 import uuid from 'react-native-uuid';
 
 
-export default function NewChild({ data, setData, setindexOfData, writeFile, indexOfData, childrenElements, setChildrenElemens }) {
+export default function NewPolicy({ data, setData, setindexOfData, writeFile, indexOfData, policiesElements, setpoliciesElemens }) {
   const navigate = useNavigate();
-
+  const [showError,setShowError]= React.useState(false);
+  const checkMail = (text) => {
+    if (/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(text) && text !== "") {
+      setShowError(false)
+      return true;
+    } else {
+      setShowError(true)
+      return false;
+    }
+  }
   const [showDropDown, setShowDropDown] = React.useState(false);
   const [showMultiSelectDropDown, setShowMultiSelectDropDown] = React.useState(false);
   const [actor, setActor] = React.useState("");
   const [mode, setMode] = React.useState("");
   const [id, setId] = React.useState(uuid.v4());
+  const [text, setText] = React.useState("");
 
   const actorTypes = [
     {
@@ -43,6 +53,10 @@ export default function NewChild({ data, setData, setindexOfData, writeFile, ind
     {
       label: "Resource Tenant Agent",
       value: "oc-acl:ResourceTenantAgent",
+    },
+    {
+      label: "Single user",
+      value: "acl:singleUser",
     },
   ];
 
@@ -65,19 +79,21 @@ export default function NewChild({ data, setData, setindexOfData, writeFile, ind
     }
   ]
 
-  //data[indexOfData].usrData
+  //data[indexOfData].resources
   const saveNewData = (dataBlock) => {
-
-    if (id !== "" && actor !== "", mode.length > 0) {
-      let objIndex = dataBlock[indexOfData].usrData.findIndex((obj => obj.id == childrenElements.id));
-      dataBlock[indexOfData].usrData[objIndex].children.push({ id: id, actorType: actor, mode: mode })
-      console.log(dataBlock[indexOfData].usrData[objIndex].children)
-      setChildrenElemens( dataBlock[indexOfData].usrData[objIndex])
+    if (id !== "" && actor !== "" && mode.length > 0) {
+      let objIndex = dataBlock[indexOfData].resources.findIndex((obj => obj.id == policiesElements.id));
+      dataBlock[indexOfData].resources[objIndex].policies.push({ id: id, actorType: (actor !== "acl:singleUser")?[actor]:["acl:agent:"+text], mode: mode.split(",").slice(1) })
+      setpoliciesElemens(dataBlock[indexOfData].resources[objIndex])
       setData(dataBlock);
       writeFile(JSON.stringify(dataBlock));
       navigate(-1)
     }
   }
+
+  React.useEffect(() => {
+    checkMail(text);
+  }, [text]);
 
   return (
     <SafeAreaProvider>
@@ -85,7 +101,7 @@ export default function NewChild({ data, setData, setindexOfData, writeFile, ind
       <Appbar.Header elevated={true}>
         <Appbar.BackAction onPress={() => { navigate(-1) }} />
         <Appbar.Content title="New Element" />
-        <Appbar.Action icon="check" onPress={() => { saveNewData(data) }} />
+        {(actor !== "acl:singleUser")?<Appbar.Action icon="check" onPress={() => { saveNewData(data) }} />:<Appbar.Action icon="check" onPress={() => { ( checkMail(text))?saveNewData(data):console.log("mail not valid") }} />}
       </Appbar.Header>
 
       <ScrollView>
@@ -129,6 +145,26 @@ export default function NewChild({ data, setData, setindexOfData, writeFile, ind
             />
           </View>
         </View>
+        {(actor === "acl:singleUser") ? <View style={{
+          flexDirection: "row",
+          justifyContent: 'center'
+        }}>
+          <View style={{
+            width: '90%',
+          }} >
+            <TextInput
+              label="Email"
+              value={text}
+              dense={false}
+              mode="outlined"
+              error={showError}
+              onChangeText={text => setText(text)}
+            />
+            <HelperText type="error" visible={showError}>
+              Email address is invalid!
+            </HelperText>
+          </View>
+        </View> : <></>}
         <View style={{
           flexDirection: "row",
           justifyContent: 'center',
@@ -139,7 +175,7 @@ export default function NewChild({ data, setData, setindexOfData, writeFile, ind
             width: '90%',
           }} >
             <DropDown
-              label={"Aceess Modes"}
+              label={"Acess Modes"}
               mode={"outlined"}
               visible={showMultiSelectDropDown}
               showDropDown={() => setShowMultiSelectDropDown(true)}

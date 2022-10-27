@@ -18,21 +18,33 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import RNFS, { read, write } from 'react-native-fs';
 import { useNavigate } from "react-router-native";
-import { AnimatedFAB, Appbar, Portal, Text, TextInput } from 'react-native-paper';
+import { AnimatedFAB, Appbar, Portal, Text, TextInput,HelperText } from 'react-native-paper';
 import uuid from 'react-native-uuid';
 
 
-export default function EditChild({ data, setData, setindexOfData, writeFile, indexOfData, childrenElements, setChildrenElemens, idToEdit }) {
+export default function EditPolicy({ data, setData, setindexOfData, writeFile, indexOfData, policiesElements, setpoliciesElemens, idToEdit }) {
   const navigate = useNavigate();
-  const mainIndex = data[indexOfData].usrData.findIndex((obj => obj.id == childrenElements.id));
-  const thisElementIndex = data[indexOfData].usrData[mainIndex].children.findIndex((obj => obj.id === idToEdit));
-  const currentData = data[indexOfData].usrData[mainIndex].children[thisElementIndex]
+  const [showError,setShowError]= React.useState(false);
+  const checkMail = (text) => {
+    if (/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(text) && text !== "") {
+      setShowError(false)
+      return true;
+    } else {
+      setShowError(true)
+      return false;
+    }
+  }
+
+  
+  const mainIndex = data[indexOfData].resources.findIndex((obj => obj.id == policiesElements.id));
+  const thisElementIndex = data[indexOfData].resources[mainIndex].policies.findIndex((obj => obj.id === idToEdit));
+  const currentData = data[indexOfData].resources[mainIndex].policies[thisElementIndex]
   const [showDropDown, setShowDropDown] = React.useState(false);
   const [showMultiSelectDropDown, setShowMultiSelectDropDown] = React.useState(false);
-  const [actor, setActor] = React.useState(currentData.actorType);
-  const [mode, setMode] = React.useState(currentData.mode);
+  const [actor, setActor] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType[0].replace('acl:agent:','')))?"acl:singleUser":currentData.actorType[0]);
+  const [mode, setMode] = React.useState(","+currentData.mode.join());
   const [id, setId] = React.useState(currentData.id);
-
+  const [text, setText] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType[0].replace('acl:agent:','')))?currentData.actorType[0].replace('acl:agent:',''):"");
   const actorTypes = [
     {
       label: "Authenticated Actor",
@@ -45,6 +57,10 @@ export default function EditChild({ data, setData, setindexOfData, writeFile, in
     {
       label: "Resource Tenant Agent",
       value: "oc-acl:ResourceTenantAgent",
+    },
+    {
+      label: "Single user",
+      value: "acl:singleUser",
     },
   ];
 
@@ -67,27 +83,32 @@ export default function EditChild({ data, setData, setindexOfData, writeFile, in
     }
   ]
 
-  //data[indexOfData].usrData
-  const saveNewData = (dataBlock) => {
 
-    if (id !== "" && actor !== "", mode.length > 0) {
-      let mainIndex = dataBlock[indexOfData].usrData.findIndex((obj => obj.id == childrenElements.id));
-      let thisElementIndex = dataBlock[indexOfData].usrData[mainIndex].children.findIndex((obj => obj.id === idToEdit));
-      dataBlock[indexOfData].usrData[mainIndex].children[thisElementIndex] = { id: id, actorType: actor, mode: mode };
-      setChildrenElemens(dataBlock[indexOfData].usrData[mainIndex])
+  //data[indexOfData].resources
+  const modifyData = (dataBlock) => {
+
+    if (id !== "" && actor !== ""&& mode.length > 0) {
+      let mainIndex = dataBlock[indexOfData].resources.findIndex((obj => obj.id == policiesElements.id));
+      let thisElementIndex = dataBlock[indexOfData].resources[mainIndex].policies.findIndex((obj => obj.id === idToEdit));
+      dataBlock[indexOfData].resources[mainIndex].policies[thisElementIndex] = { id: id, actorType: (actor !== "acl:singleUser")?[actor]:["acl:agent:"+text], mode: mode.split(",").slice(1) };
+      setpoliciesElemens(dataBlock[indexOfData].resources[mainIndex])
       setData(dataBlock);
       writeFile(JSON.stringify(dataBlock));
       navigate(-1)
     }
   }
 
+  React.useEffect(() => {
+    checkMail(text);
+  }, [text]);
+
   return (
     <SafeAreaProvider>
 
       <Appbar.Header elevated={true}>
         <Appbar.BackAction onPress={() => { navigate(-1) }} />
-        <Appbar.Content title="New Element" />
-        <Appbar.Action icon="check" onPress={() => { saveNewData(data) }} />
+        <Appbar.Content title={"Edit"+currentData.id} />
+        {(actor !== "acl:singleUser")?<Appbar.Action icon="check" onPress={() => { modifyData(data) }} />:<Appbar.Action icon="check" onPress={() => { ( checkMail(text))?modifyData(data):console.log("mail not valid") }} />}
       </Appbar.Header>
 
       <ScrollView>
@@ -131,6 +152,26 @@ export default function EditChild({ data, setData, setindexOfData, writeFile, in
             />
           </View>
         </View>
+        {(actor === "acl:singleUser") ? <View style={{
+          flexDirection: "row",
+          justifyContent: 'center'
+        }}>
+          <View style={{
+            width: '90%',
+          }} >
+            <TextInput
+              label="Email"
+              value={text}
+              dense={false}
+              mode="outlined"
+              error={showError}
+              onChangeText={text => setText(text)}
+            />
+            <HelperText type="error" visible={showError}>
+              Email address is invalid!
+            </HelperText>
+          </View>
+        </View> : <></>}
         <View style={{
           flexDirection: "row",
           justifyContent: 'center',

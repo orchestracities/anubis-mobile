@@ -1,4 +1,4 @@
- import * as React from 'react';
+import * as React from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -17,81 +17,87 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import RNFS from 'react-native-fs';
 import { useNavigate } from "react-router-native";
-import { AnimatedFAB, Appbar, Portal, Text,TextInput } from 'react-native-paper';
+import { AnimatedFAB, Appbar, Portal, Text, TextInput } from 'react-native-paper';
 import uuid from 'react-native-uuid';
+import DropDown from "react-native-paper-dropdown";
 
 
-export default function NewMain ({ data,setData,setindexOfData,writeFile,indexOfData}) {
-    const navigate = useNavigate();
+export default function NewMain({ data, setData, setindexOfData, writeFile, indexOfData }) {
+  const navigate = useNavigate();
 
 
-    const [id,setId]=React.useState('Urn:xxx:yyy-'+uuid.v4());
-    const [description,setDescription]=React.useState('');
-
-
-//data[indexOfData].usrData
-const saveNewData=(dataBlock)=>{
-   
-    if(id!==""&&description!==""){
-        dataBlock[indexOfData].usrData.push({id:id,description:description,children:[]})
-        setData(dataBlock);
-        writeFile(JSON.stringify(dataBlock));
-        navigate(-1)
+  const [id, setId] = React.useState('Urn:xxx:yyy-' + uuid.v4());
+  const [description, setDescription] = React.useState('');
+  const [resourceType, setResourceType] = React.useState('');
+  const [showDropDown, setShowDropDown] = React.useState(false);
+  const resourceTypes=[
+    {
+      label: "entity",
+      value: 'entity',
     }
-}
+  ]
+  //data[indexOfData].resources
+  const saveNewData = (dataBlock) => {
+
+    if (id !== "" && resourceType !== "") {
+      dataBlock[indexOfData].resources.push({ id: id,resource_type: resourceType, policies: [] })
+      setData(dataBlock);
+      writeFile(JSON.stringify(dataBlock));
+      navigate(-1)
+    }
+  }
 
   return (
     <SafeAreaProvider>
-   
-        <Appbar.Header elevated={true}>
-        <Appbar.BackAction onPress={() => {navigate(-1)}} />
-          <Appbar.Content title="New Element" />
-          <Appbar.Action icon="check" onPress={() => {saveNewData(data)}} />
-        </Appbar.Header>
+      <Appbar.Header elevated={true}>
+        <Appbar.BackAction onPress={() => { navigate(-1) }} />
+        <Appbar.Content title="New Element" />
+        <Appbar.Action icon="check" onPress={() => { saveNewData(data) }} />
+      </Appbar.Header>
 
-        <ScrollView>
+      <ScrollView>
         <View style={{
-              flexDirection: "row",
-              justifyContent: 'center',
-              marginTop:25,
-              marginBottom:25
-            }}>
-              <View style={{
-                width: '90%',
-              }} >
-                <TextInput
-                  label="ID"
-                  value={id}
-                  dense={false}
-                  mode="outlined"
-                  disabled={true}
-/>
-              </View>
-            </View>
+          flexDirection: "row",
+          justifyContent: 'center',
+          marginTop: 25,
+          marginBottom: 25
+        }}>
+          <View style={{
+            width: '90%',
+          }} >
+            <TextInput
+              label="ID"
+              value={id}
+              dense={false}
+              mode="outlined"
+              disabled={true}
+            />
+          </View>
+        </View>
+        <View style={{
+          flexDirection: "row",
+          justifyContent: 'center',
+          marginTop: 25,
+          marginBottom: 25
+        }}>
+          <View style={{
+            width: '90%',
+          }} >
+            <DropDown
+              label={"resource type"}
+              mode={"outlined"}
+              visible={showDropDown}
+              showDropDown={() => setShowDropDown(true)}
+              onDismiss={() => setShowDropDown(false)}
+              value={resourceType}
+              setValue={setResourceType}
+              list={resourceTypes}
+            />
+          </View>
+        </View>
+      </ScrollView>
 
-            <View style={{
-              flexDirection: "row",
-              justifyContent: 'center',
-              marginTop:25,
-              marginBottom:25
-            }}>
-              <View style={{
-                width: '90%',
-              }} >
-                <TextInput
-                  label="Description"
-                  value={description}
-                  dense={false}
-                  mode="outlined"
-                  multiline={true}
-                  numberOfLines={4}
-                  onChangeText={text => setDescription(text)}
-                />
-              </View>
-            </View>
-        </ScrollView>
-    
-   </SafeAreaProvider>
+    </SafeAreaProvider>
   );
 };
 
