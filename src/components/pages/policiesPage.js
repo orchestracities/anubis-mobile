@@ -95,7 +95,7 @@ export default function PoliciesPage({ data, setData, writeFile, indexOfData, po
  
 
   const filterElements = (value) => {
-    let result = policiesElements.policies.filter(i => i.id.toLowerCase().includes(value.toLowerCase()) || i.actorType.toLowerCase().includes(value.toLowerCase()) || i.mode.toLowerCase().includes(value.toLowerCase()));
+    let result = policiesElements.policies.filter(i => i.id.toLowerCase().includes(value.toLowerCase()) || i.actorType[0].toLowerCase().includes(value.toLowerCase()) || i.mode.join().toLowerCase().includes(value.toLowerCase()));
     setElementsDisplayed(result);
   }
 
@@ -135,7 +135,7 @@ export default function PoliciesPage({ data, setData, writeFile, indexOfData, po
                   style={{ borderRadius: 20 }}
                   theme={{ roundness: 20 }}
                   onChangeText={value => setSearch(value)}
-
+                  value={search}
                   left={<TextInput.Icon icon="arrow-left" onPress={() => { setOpenSearch(false) }} />}
                 />
               </View> : <></>
@@ -166,22 +166,12 @@ export default function PoliciesPage({ data, setData, writeFile, indexOfData, po
               <DataTable.Row key={index} onLongPress={() => toElementActions(thisresources.id)}
                 onPress={() => console.log("pressed")} style={checkPress(thisresources.id)}>
                 <DataTable.Cell>{thisresources.id}</DataTable.Cell>
-                <DataTable.Cell >{thisresources.actorType}</DataTable.Cell>
+                <DataTable.Cell >{thisresources.actorType[0]}</DataTable.Cell>
                 <DataTable.Cell >{thisresources.mode.join()}</DataTable.Cell>
               </DataTable.Row>
             ))}
 
-            <DataTable.Pagination
-              page={page}
-              numberOfPages={Math.ceil(items.length / numberOfItemsPerPage)}
-              onPageChange={page => setPage(page)}
-              label={`${from + 1}-${to} of ${items.length}`}
-              showFastPaginationControls
-              numberOfItemsPerPageList={numberOfItemsPerPageList}
-              numberOfItemsPerPage={numberOfItemsPerPage}
-              onItemsPerPageChange={onItemsPerPageChange}
-              selectPageDropdownLabel={'Rows per page'}
-            />
+           
           </DataTable>
 
         </ScrollView>

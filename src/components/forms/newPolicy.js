@@ -83,7 +83,7 @@ export default function NewPolicy({ data, setData, setindexOfData, writeFile, in
   const saveNewData = (dataBlock) => {
     if (id !== "" && actor !== "" && mode.length > 0) {
       let objIndex = dataBlock[indexOfData].resources.findIndex((obj => obj.id == policiesElements.id));
-      dataBlock[indexOfData].resources[objIndex].policies.push({ id: id, actorType: (actor !== "acl:singleUser")?actor:"acl:"+text, mode: mode.split(",").slice(1) })
+      dataBlock[indexOfData].resources[objIndex].policies.push({ id: id, actorType: (actor !== "acl:singleUser")?[actor]:["acl:agent:"+text], mode: mode.split(",").slice(1) })
       setpoliciesElemens(dataBlock[indexOfData].resources[objIndex])
       setData(dataBlock);
       writeFile(JSON.stringify(dataBlock));
@@ -175,7 +175,7 @@ export default function NewPolicy({ data, setData, setindexOfData, writeFile, in
             width: '90%',
           }} >
             <DropDown
-              label={"Aceess Modes"}
+              label={"Acess Modes"}
               mode={"outlined"}
               visible={showMultiSelectDropDown}
               showDropDown={() => setShowMultiSelectDropDown(true)}

@@ -28,7 +28,7 @@ export default function EditMain ({ data,setData,setindexOfData,writeFile,indexO
     const thisIndex= data[indexOfData].resources.findIndex((obj => obj.id == idToEdit));
     const [id,setId]=React.useState(data[indexOfData].resources[thisIndex].id);
     const [description,setDescription]=React.useState(data[indexOfData].resources[thisIndex].description);
-    const [resourceType, setResourceType] = React.useState(data[indexOfData].resources[thisIndex].resource_type[0]);
+    const [resourceType, setResourceType] = React.useState(data[indexOfData].resources[thisIndex].resource_type);
     const [showDropDown, setShowDropDown] = React.useState(false);
     const resourceTypes=[
       {
@@ -41,7 +41,7 @@ export default function EditMain ({ data,setData,setindexOfData,writeFile,indexO
 const saveNewData=(dataBlock)=>{
    
   if (id !== "" && resourceType !== "") {
-    dataBlock[indexOfData].resources[thisIndex]={id:id,resource_type: [resourceType],policies:[]}
+    dataBlock[indexOfData].resources[thisIndex]={id:id,resource_type: resourceType,policies:[]}
         setData(dataBlock);
         writeFile(JSON.stringify(dataBlock));
         navigate(-1)

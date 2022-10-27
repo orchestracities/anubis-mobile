@@ -41,10 +41,10 @@ export default function EditPolicy({ data, setData, setindexOfData, writeFile, i
   const currentData = data[indexOfData].resources[mainIndex].policies[thisElementIndex]
   const [showDropDown, setShowDropDown] = React.useState(false);
   const [showMultiSelectDropDown, setShowMultiSelectDropDown] = React.useState(false);
-  const [actor, setActor] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType))?"acl:singleUser":currentData.actorType);
+  const [actor, setActor] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType[0].replace('acl:agent:','')))?"acl:singleUser":currentData.actorType[0]);
   const [mode, setMode] = React.useState(","+currentData.mode.join());
   const [id, setId] = React.useState(currentData.id);
-  const [text, setText] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType))?currentData.actorType.replace('acl:',''):"");
+  const [text, setText] = React.useState((/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(currentData.actorType[0].replace('acl:agent:','')))?currentData.actorType[0].replace('acl:agent:',''):"");
   const actorTypes = [
     {
       label: "Authenticated Actor",
@@ -90,7 +90,7 @@ export default function EditPolicy({ data, setData, setindexOfData, writeFile, i
     if (id !== "" && actor !== ""&& mode.length > 0) {
       let mainIndex = dataBlock[indexOfData].resources.findIndex((obj => obj.id == policiesElements.id));
       let thisElementIndex = dataBlock[indexOfData].resources[mainIndex].policies.findIndex((obj => obj.id === idToEdit));
-      dataBlock[indexOfData].resources[mainIndex].policies[thisElementIndex] = { id: id, actorType: (actor !== "acl:singleUser")?actor:"acl:"+text, mode: mode.split(",").slice(1) };
+      dataBlock[indexOfData].resources[mainIndex].policies[thisElementIndex] = { id: id, actorType: (actor !== "acl:singleUser")?[actor]:["acl:agent:"+text], mode: mode.split(",").slice(1) };
       setpoliciesElemens(dataBlock[indexOfData].resources[mainIndex])
       setData(dataBlock);
       writeFile(JSON.stringify(dataBlock));
@@ -107,7 +107,7 @@ export default function EditPolicy({ data, setData, setindexOfData, writeFile, i
 
       <Appbar.Header elevated={true}>
         <Appbar.BackAction onPress={() => { navigate(-1) }} />
-        <Appbar.Content title="New Element" />
+        <Appbar.Content title={"Edit"+currentData.id} />
         {(actor !== "acl:singleUser")?<Appbar.Action icon="check" onPress={() => { modifyData(data) }} />:<Appbar.Action icon="check" onPress={() => { ( checkMail(text))?modifyData(data):console.log("mail not valid") }} />}
       </Appbar.Header>
 

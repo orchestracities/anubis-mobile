@@ -21,7 +21,7 @@ export default function App() {
   const [indexOfData, setindexOfData] = React.useState(-1);
   const [policiesElements, setpoliciesElemens] = React.useState([]);
   const [idToEdit, setIdToEdit] = React.useState("")
-  const [updator, setUpdator] = React.useState(Math.random())
+  const [firstLoad, setFirstLoad] = React.useState(true)
   // write the file
 
   const readFile = async () => {
@@ -42,7 +42,6 @@ export default function App() {
         console.log('FILE created ' + data);
        let newData=JSON.parse(data)
        setData(newData);
-        setUpdator(Math.random());
       })
       .catch((err) => {
         console.log(err.message);
@@ -54,6 +53,10 @@ export default function App() {
   React.useEffect(() => {
     readFile();
   }, []);
+
+  React.useEffect(() => {
+    setFirstLoad(!firstLoad);
+  }, [indexOfData]);
 
   return (
     <SafeAreaProvider>
@@ -71,7 +74,7 @@ export default function App() {
                 element={
                   <MainPage
                     data={data} 
-                    setData={setData} 
+                    firstLoad={firstLoad} 
                     setindexOfData={setindexOfData} 
                     writeFile={writeFile} 
                     indexOfData={indexOfData} 

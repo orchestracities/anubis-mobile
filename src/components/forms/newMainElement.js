@@ -40,7 +40,7 @@ export default function NewMain({ data, setData, setindexOfData, writeFile, inde
   const saveNewData = (dataBlock) => {
 
     if (id !== "" && resourceType !== "") {
-      dataBlock[indexOfData].resources.push({ id: id,resource_type: [resourceType], policies: [] })
+      dataBlock[indexOfData].resources.push({ id: id,resource_type: resourceType, policies: [] })
       setData(dataBlock);
       writeFile(JSON.stringify(dataBlock));
       navigate(-1)

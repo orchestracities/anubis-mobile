@@ -27,7 +27,7 @@ export default function UserDetection({ data, setData, setindexOfData, writeFile
   const getSavedUsers = (data) => {
     let datamap = []
     for (let thisUser of data) {
-      datamap.push({ label: thisUser.usrMail, value: thisUser.usrMail })
+      datamap.push({ label: thisUser.user, value: thisUser.user })
     }
     return datamap;
   }
@@ -43,21 +43,21 @@ export default function UserDetection({ data, setData, setindexOfData, writeFile
     checkMail();
     if (/^[a-z0-9.]{1,64}@[a-z0-9.]{1,64}$/i.test(text) && text !== "") {
       if (data.length > 0) {
-        let objIndex = data.findIndex((obj => obj.usrMail == text));
+        let objIndex = data.findIndex((obj => obj.user == text));
         if (objIndex !== -1) {
           setindexOfData(objIndex);
           console.log(objIndex)
           return navigate("/mainPage");
         } else {
-          setData([...data, ...[{ usrMail: text, resources: [] }]])
-          writeFile(JSON.stringify([...data, ...[{ usrMail: text, resources: [] }]]))
+          setData([...data, ...[{ user: text, resources: [] }]])
+          writeFile(JSON.stringify([...data, ...[{ user: text, resources: [] }]]))
           setindexOfData(data.length);
           console.log(data.length)
           return navigate("/mainPage");
         }
       } else {
-        setData([...[], ...[{ usrMail: text, resources: [] }]])
-        writeFile(JSON.stringify([...[], ...[{ usrMail: text, resources: [] }]]))
+        setData([...[], ...[{ user: text, resources: [] }]])
+        writeFile(JSON.stringify([...[], ...[{ user: text, resources: [] }]]))
         setindexOfData(0);
         console.log(0)
         return navigate("/mainPage");
