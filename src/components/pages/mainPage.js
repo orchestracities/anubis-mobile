@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 });
 
-export default function MainPage({ data, firstLoad, writeFile, indexOfData, setindexOfData, setpoliciesElemens, setIdToEdit }) {
+export default function MainPage({ data, firstLoad, writeFile, indexOfData, setindexOfData, setpoliciesElemens, setIdToEdit,setFirstLoad }) {
   const [snackbar, setSnackbar] = React.useState(false);
   const [dataFeedback, setDataFeedback] = React.useState(false);
   const onDismissSnackBar = () => setSnackbar(false);
@@ -103,14 +103,16 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
     console.log("DATATOSEND:" + JSON.stringify(parentElement))
     setLoader(true);
     axios
-      .post("http://192.168.1.171:8099/mobile/policies", parentElement)
+      .post("http://192.168.120.251:8099/mobile/policies", parentElement)
       .then(() => {
         setLoader(false);
         setDataFeedback("the data is updated")
         setSnackbar(true)
+        getSynchedData()
       })
       .catch((e) => {
-        setDataFeedback(e)
+        console.log(e)
+        setDataFeedback(JSON.stringify(e))
         setSnackbar(true)
       });
   };
@@ -119,7 +121,7 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
     console.log("DATATOSEND:" + JSON.stringify(parentElement))
     setLoader(true);
     axios
-      .get("http://192.168.1.171:8099/mobile/policies", {
+      .get("http://192.168.120.251:8099/mobile/policies", {
         headers: {
           user: parentElement.user,
         }
@@ -135,9 +137,11 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
 
   React.useEffect(() => {
     (firstLoad) ? getSynchedData() : "";
+    setFirstLoad(false)
   }, []);
 
   const toMainMenu=()=>{
+    setFirstLoad(false)
     navigate(-1);
     setindexOfData(-1)
   }
