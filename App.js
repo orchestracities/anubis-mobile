@@ -21,7 +21,7 @@ export default function App() {
   const [indexOfData, setindexOfData] = React.useState(-1);
   const [policiesElements, setpoliciesElemens] = React.useState([]);
   const [idToEdit, setIdToEdit] = React.useState("")
-  const [firstLoad, setFirstLoad] = React.useState(true)
+  const [firstLoad, setFirstLoad] = React.useState(false)
   // write the file
 
   const readFile = async () => {
@@ -55,7 +55,7 @@ export default function App() {
   }, []);
 
   React.useEffect(() => {
-    setFirstLoad(!firstLoad);
+    setFirstLoad(true);
   }, [indexOfData]);
 
   return (
@@ -76,7 +76,8 @@ export default function App() {
                     data={data} 
                     firstLoad={firstLoad} 
                     setindexOfData={setindexOfData} 
-                    writeFile={writeFile} 
+                    writeFile={writeFile}
+                    setFirstLoad={setFirstLoad}
                     indexOfData={indexOfData} 
                     setpoliciesElemens={setpoliciesElemens} 
                     setIdToEdit={setIdToEdit}/>

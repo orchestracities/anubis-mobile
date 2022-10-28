@@ -66,6 +66,7 @@ export default function PoliciesPage({ data, setData, writeFile, indexOfData, po
 
 
 
+  
   const toElementActions = (id) => {
     (idPressed === id) ? setIDpressed("") : setIDpressed(id);
   }
@@ -170,10 +171,7 @@ export default function PoliciesPage({ data, setData, writeFile, indexOfData, po
                 <DataTable.Cell >{thisresources.mode.join()}</DataTable.Cell>
               </DataTable.Row>
             ))}
-
-           
           </DataTable>
-
         </ScrollView>
         <AnimatedFAB
           icon={'plus'}
