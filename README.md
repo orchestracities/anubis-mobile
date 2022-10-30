@@ -1,6 +1,7 @@
 # Anubis Mobile interface for users
 
-This is a proof of concept implementation of a Mobile application allowing
+<img src="img/logo.jpg" alt="Anubis" style="float: left; margin-right: 10px;"
+width="200"/> This is a proof of concept implementation of a Mobile application allowing
 resource owners to interact with a network of [Anubis](https://anubis-pep.readthedocs.io/en/latest/)
 middleware to govern policies.
 Ultimately this allows for decentralized definition of policies for resources
