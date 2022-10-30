@@ -19,40 +19,42 @@ The mobile app currently as been tested only for Android (Android 6.0
 
 1. A user, once launched the application, can register using the email.
 
-  ![Registration](img/registration.jpg)
+    ![Registration](img/registration.jpg)
 
 1. Once registered, if any resource owned by the user are available in the
-  middleware network, this will be listed in the home page.
+    middleware network, this will be listed in the home page.
 
-  ![Home: List of resources](img/home.jpg)
+    ![Home: List of resources](img/home.jpg)
 
-  Resources and related policies are retrieved via the `/user/policies` end
-  point of the [Policy Distribution Middleware API](https://anubis-pep.readthedocs.io/en/latest/user/walkthrough-middleware.html#userpolicies)
+    Resources and related policies are retrieved via the `/user/policies` end
+    point of the [Policy Distribution Middleware API](https://anubis-pep.readthedocs.io/en/latest/user/walkthrough-middleware.html#userpolicies)
 
 1. From the home page, the user can pick a resource, and see existing policies
   for the picked resource.
 
-  ![List of policies](img/policies.jpg)
+    ![List of policies](img/policies.jpg)
 
-1. In the policy view, the user using long press, can trigger the edit of a policy.
+1. In the policy view, the user using long press, can trigger the edit of a
+    policy.
 
-  ![Edit policy](img/edit-policy.jpg)
+    ![Edit policy](img/edit-policy.jpg)
 
 1. In the policy view the user can add new policies.
 
-  ![New policy](img/new-policy.jpg)
+    ![New policy](img/new-policy.jpg)
 
 1. Once done, the user can push back policies to the middleware network using
-  the synch button. A local copy will be preserved.
+    the synch button. A local copy will be preserved.
 
-  ![Synch data](img/synch.jpg)
+    ![Synch data](img/synch.jpg)
 
-  Updated resource policies are published via the `/user/policies` end point of
-  the [Policy Distribution Middleware API](https://anubis-pep.readthedocs.io/en/latest/user/walkthrough-middleware.html#userpolicies)
+    Updated resource policies are published via the `/user/policies` end point
+    of the [Policy Distribution Middleware API](https://anubis-pep.readthedocs.io/en/latest/user/walkthrough-middleware.html#userpolicies)
 
 ## Development Setup
 
-In order to run Anubis mobile you must at first configure React native using this [guide](https://reactnative.dev/docs/environment-setup).
+In order to run Anubis mobile you must at first configure React native using
+this [guide](https://reactnative.dev/docs/environment-setup).
 After that run inside the folder
 
 ```bash
@@ -62,7 +64,8 @@ $ react-native run-android
 
 ### If watchman is doing an error:
 
-This error is very common with the port on OSX to fix it, run this commands in order and then start the application again 
+This error is very common with the port on OSX to fix it, run this commands in
+order and then start the application again 
 
 ```bash
 $ watchman watch-del-all
