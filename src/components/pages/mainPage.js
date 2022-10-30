@@ -103,7 +103,7 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
     console.log("DATATOSEND:" + JSON.stringify(parentElement))
     setLoader(true);
     axios
-      .post("http://192.168.120.251:8099/mobile/policies", parentElement)
+      .post("http://192.168.120.251:8099/user/policies", parentElement)
       .then(() => {
         setLoader(false);
         setDataFeedback("the data is updated")
@@ -121,7 +121,7 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
     console.log("DATATOSEND:" + JSON.stringify(parentElement))
     setLoader(true);
     axios
-      .get("http://192.168.120.251:8099/mobile/policies", {
+      .get("http://192.168.120.251:8099/user/policies", {
         headers: {
           user: parentElement.user,
         }
