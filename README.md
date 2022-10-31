@@ -1,6 +1,6 @@
 # Anubis Mobile interface for users
 
-<img src="img/logo.jpg" align="left" alt="Anubis"  width="100" height="100" /> This is a proof of concept implementation of a Mobile application allowing
+<img src="img/logo.jpg" align="left" alt="Anubis"  width="300" height="200" /> This is a proof of concept implementation of a Mobile application allowing
 resource owners to interact with a network of [Anubis](https://anubis-pep.readthedocs.io/en/latest/)
 middleware to govern policies.
 Ultimately this allows for decentralized definition of policies for resources
@@ -19,10 +19,12 @@ The visual part has been done using the api from Material for you and is using h
 
 1. A user, once launched the application, can register using the email.
 
-    ![Registration](img/registration.png)
+<img src="img/registration.png" align="center" alt="Registration"  width="240" height="500" /> 
+  
 
 1. Once registered, if any resource owned by the user are available in the
     middleware network, this will be listed in the home page.
+<img src="img/home.png" align="center" alt="Home: List of resources"  width="240" height="500" /> 
 
     ![Home: List of resources](img/home.png)
 
@@ -32,21 +34,21 @@ The visual part has been done using the api from Material for you and is using h
 1. From the home page, the user can pick a resource, and see existing policies
   for the picked resource.
 
-    ![List of policies](img/policies.png)
+<img src="img/policies.png" align="center" alt="List of policies"  width="240" height="500" /> 
 
 1. In the policy view, the user using long press, can trigger the edit of a
     policy.
 
-    ![Edit policy](img/edit-policy.png)
+<img src="img/edit-policy.png" align="center" alt="Edit policy"  width="240" height="500" /> 
 
 1. In the policy view the user can add new policies.
 
-    ![New policy](img/new-policy.png)
+<img src="img/new-policy.png" align="center" alt="New policy"  width="240" height="500" /> 
 
 1. Once done, the user can push back policies to the middleware network using
     the synch button. A local copy will be preserved.
-
-    ![Synch data](img/synch.png)
+    
+<img src="img/synch.png" align="center" alt="Synch data"  width="240" height="500" /> 
 
     Updated resource policies are published via the `/user/policies` end point
     of the [Policy Distribution Middleware API](https://anubis-pep.readthedocs.io/en/latest/user/walkthrough-middleware.html#userpolicies)
