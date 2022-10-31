@@ -103,15 +103,15 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
     console.log("DATATOSEND:" + JSON.stringify(parentElement))
     setLoader(true);
     axios
-      .post("http://192.168.120.251:8099/user/policies", parentElement)
+      .post("http://192.168.1.171:8099/user/policies", parentElement)
       .then(() => {
         setLoader(false);
-        setDataFeedback("the data is updated")
+        setDataFeedback("the data was updated")
         setSnackbar(true)
-        getSynchedData()
       })
       .catch((e) => {
         console.log(e)
+        setLoader(false);
         setDataFeedback(JSON.stringify(e))
         setSnackbar(true)
       });
@@ -121,7 +121,7 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
     console.log("DATATOSEND:" + JSON.stringify(parentElement))
     setLoader(true);
     axios
-      .get("http://192.168.120.251:8099/user/policies", {
+      .get("http://192.168.1.171:8099/user/policies", {
         headers: {
           user: parentElement.user,
         }
@@ -132,6 +132,9 @@ export default function MainPage({ data, firstLoad, writeFile, indexOfData, seti
       })
       .catch((e) => {
         console.log(e)
+        setLoader(false);
+        setDataFeedback(JSON.stringify(e))
+        setSnackbar(true)
       });
   };
 
