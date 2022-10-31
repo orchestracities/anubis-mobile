@@ -1,3 +1,4 @@
 node_modules
 .idea
 .__test__
+.DS_Store
